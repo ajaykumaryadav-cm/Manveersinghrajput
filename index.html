@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manveer Singh | Senior Quality Engineer | Cable Manufacturing Expert</title>
+    
+    <!-- CSS Frameworks -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-dark: #0f172a;
+            --accent-gold: #f59e0b;
+            --success-green: #10b981;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--primary-dark) 100%);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, var(--accent-gold));
+            border-radius: 2px;
+        }
+        
+        .floating-card {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .floating-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .bs-card {
+            border-radius: 0.75rem;
+            border: none;
+            overflow: hidden;
+        }
+        
+        .bs-btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), #1d4ed8);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .bs-btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            transform: translateY(-2px);
+        }
+        
+        .bulma-section {
+            padding: 3rem 1.5rem;
+        }
+        
+        .bulma-card {
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.02);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .loading-bar {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #3b82f6, var(--accent-gold));
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: loading 2s ease-in-out;
+        }
+        
+        @keyframes loading {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(0.7); }
+            100% { transform: scaleX(1); }
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 55%), 
+                              radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.1) 0%, transparent 55%);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1d4ed8;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title::after {
+                width: 40%;
+            }
+            
+            .floating-card:hover {
+                transform: none;
+            }
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            width: 0;
+            transition: width 2s ease-in-out;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-gold));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.3rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-blue);
+        }
+        
+        .contact-section {
+            padding: 4rem 0;
+        }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .premium-badge {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Loading Bar -->
+    <div class="loading-bar"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
+                <span class="fw-bold fs-3">Manveer Singh</span>
+                <span class="ms-2 text-blue-300 fs-6">Senior Quality Engineer</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#standards">Standards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn bs-btn-primary text-white ms-3">
+                    <i class="fas fa-download me-2"></i>Resume
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="position-relative min-vh-100 d-flex align-items-center justify-content-center gradient-bg overflow-hidden pt-5">
+        <div id="particles-js"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 hero-pattern"></div>
+        
+        <div class="container position-relative z-10 text-center text-white">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="mb-5 floating">
+                        <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full mx-auto border-4 border-yellow-500 shadow-2xl bg-gradient-to-br from-blue-900 to-slate-800 flex items-center justify-center">
+                            <i class="fas fa-user-tie text-5xl md:text-6xl text-white"></i>
+                        </div>
+                    </div>
+                    <h1 class="display-3 fw-bold mb-4 fade-in-up">Manveer Singh</h1>
+                    <p class="fs-2 text-blue-300 mb-3 fade-in-up">Senior Quality Engineer</p>
+                    <p class="fs-4 text-yellow-400 mb-4 fade-in-up">Cable Manufacturing Expert | BIS Compliance Specialist</p>
+                    <p class="fs-5 text-gray-300 mb-5 px-4 fade-in-up">"Ensuring Quality, Reliability, and Perfection in Every Cable We Deliver."</p>
+                    <div class="d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center fade-in-up">
+                        <a href="#contact" class="btn bs-btn-primary text-white px-5 py-3 fs-5 rounded-pill">
+                            <i class="fas fa-paper-plane me-2"></i>Get In Touch
+                        </a>
+                        <a href="#contact" class="btn btn-light text-dark px-5 py-3 fs-5 rounded-pill">
+                            <i class="fas fa-download me-2"></i>Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
+            <a href="#about" class="text-white fs-1">
+                <i class="fas fa-chevron-down animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 py-md-5 bg-white">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="stat-card text-center p-4 p-md-5 rounded-3 shadow floating-card text-white">
+                        <i class="fas fa-award text-3xl md:text-4xl mb-3 text-yellow-500"></i>
+                        <div class="display-4 fw-bold mb-2">15+</div>
+                        <div class="text-muted" style="color: white;">Years Experience</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card text-center p-4 p-md-5 rounded-3 shadow floating-card text-white">
+                        <i class="fas fa-industry text-3xl md:text-4xl mb-3 text-yellow-500"></i>
+                        <div class="display-4 fw-bold mb-2">4</div>
+                        <div class="text-muted" style="color: white;">Major Companies</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card text-center p-4 p-md-5 rounded-3 shadow floating-card text-white">
+                        <i class="fas fa-shield-alt text-3xl md:text-4xl mb-3 text-yellow-500"></i>
+                        <div class="display-4 fw-bold mb-2">50+</div>
+                        <div class="text-muted" style="color: white;">BIS Audits Cleared</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card text-center p-4 p-md-5 rounded-3 shadow floating-card text-white">
+                        <i class="fas fa-file-contract text-3xl md:text-4xl mb-3 text-yellow-500"></i>
+                        <div class="display-4 fw-bold mb-2">100%</div>
+                        <div class="text-muted" style="color: white;">BIS Compliance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bulma-section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center display-4 fw-bold text-dark mb-5">Professional Summary</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="bulma-card p-5 floating-card">
+                        <p class="mb-4">
+                            Manveer Singh is a highly skilled and dedicated <strong>Senior Quality Engineer</strong> with over <strong class="text-primary">15 years</strong> of experience in the cable manufacturing industry.
+                        </p>
+                        <p class="mb-4">
+                            His deep knowledge of <strong>BIS (Bureau of Indian Standards)</strong> and <strong>ISO 9001</strong> quality frameworks has positioned him as an expert in ensuring product excellence, regulatory compliance, and continuous process improvement.
+                        </p>
+                        <p class="mb-4">
+                            He has consistently led quality assurance teams to achieve <strong>zero-defect manufacturing</strong> and maintain a flawless compliance record during BIS audits.
+                        </p>
+                        <div class="bg-light rounded p-4 mt-4 border-start border-4 border-warning">
+                            <h3 class="h4 mb-3">Core Philosophy</h3>
+                            <p class="mb-0">
+                                I believe in precision, teamwork, and continuous innovation — combining deep technical expertise with strong leadership qualities to consistently meet and exceed organizational goals while maintaining the highest quality standards.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bulma-card p-5 bg-primary text-white floating-card">
+                        <h3 class="h2 text-center mb-5">Key Strengths</h3>
+                        <div class="mb-4">
+                            <div class="d-flex mb-3">
+                                <i class="fas fa-bullseye text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h4 class="h5">Quality Management & Inspection</h4>
+                                    <p class="mb-0 text-blue-200">Expert in type, routine, and acceptance testing of LT/HT cables following BIS and ISO norms.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fas fa-file-alt text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h4 class="h5">BIS Documentation & Audits</h4>
+                                    <p class="mb-0 text-blue-200">Skilled in preparing and maintaining BIS audit documents, ensuring compliance with multiple standards.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <i class="fas fa-chart-line text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h4 class="h5">Production Planning & Optimization</h4>
+                                    <p class="mb-0 text-blue-200">Proven ability to balance production efficiency with uncompromised quality.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <i class="fas fa-users text-warning me-3 mt-1"></i>
+                                <div>
+                                    <h4 class="h5">Leadership & Team Building</h4>
+                                    <p class="mb-0 text-blue-200">Efficient in leading cross-functional teams and implementing training modules.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <div class="bg-primary bg-opacity-50 rounded p-3 text-center">
+                                    <i class="fas fa-star text-warning text-2xl mb-2 d-block"></i>
+                                    <div class="h5 mb-1">Expert</div>
+                                    <div class="text-blue-200 small">BIS Standards</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="bg-primary bg-opacity-50 rounded p-3 text-center">
+                                    <i class="fas fa-clock text-warning text-2xl mb-2 d-block"></i>
+                                    <div class="h5 mb-1">15+</div>
+                                    <div class="text-blue-200 small">Years Experience</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-4 fw-bold text-dark mb-3">Key Expertise</h2>
+                <p class="fs-5 text-muted">
+                    Comprehensive expertise across all aspects of cable manufacturing quality control and production optimization
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="bs-card p-4 text-white floating-card" style="background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-tasks text-warning fa-3x"></i>
+                        </div>
+                        <h3 class="h2 text-center mb-3">Quality Management & Inspection</h3>
+                        <p class="text-light mb-4">Expert in type, routine, and acceptance testing of LT/HT cables following BIS and ISO norms.</p>
+                        <div class="bg-primary bg-opacity-50 rounded p-3">
+                            <h4 class="h5 mb-2">Key Skills:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> BIS Standards Compliance</li>
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Cable Testing & Analysis</li>
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> ISO 9001 Implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bs-card p-4 text-white floating-card" style="background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-cogs text-warning fa-3x"></i>
+                        </div>
+                        <h3 class="h2 text-center mb-3">Production Planning & Optimization</h3>
+                        <p class="text-light mb-4">Proven ability to balance production efficiency with uncompromised quality, using Six Sigma and Kaizen methodologies.</p>
+                        <div class="bg-primary bg-opacity-50 rounded p-3">
+                            <h4 class="h5 mb-2">Key Skills:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Six Sigma Methodologies</li>
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Kaizen Principles</li>
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Process Improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bs-card p-4 text-white floating-card" style="background: linear-gradient(135deg, var(--primary-blue), var(--primary-dark));">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-user-tie text-warning fa-3x"></i>
+                        </div>
+                        <h3 class="h2 text-center mb-3">Leadership & Team Building</h3>
+                        <p class="text-light mb-4">Efficient in leading cross-functional teams, implementing training modules, and maintaining motivation under tight deadlines.</p>
+                        <div class="bg-primary bg-opacity-50 rounded p-3">
+                            <h4 class="h5 mb-2">Key Skills:</h4>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Team Development</li>
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Performance Management</li>
+                                <li class="mb-1"><i class="fas fa-check text-warning me-2"></i> Safety Protocol Implementation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technical Skills -->
+            <div class="mt-5">
+                <h3 class="text-center display-5 fw-bold text-dark mb-5">Technical Proficiency</h3>
+                <div class="row g-5">
+                    <div class="col-md-6">
+                        <div class="bs-card p-4 shadow floating-card">
+                            <h4 class="h3 mb-4 d-flex align-items-center">
+                                <i class="fas fa-tools text-primary me-3"></i>
+                                Testing & Analysis
+                            </h4>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">Conductor Resistance Testing</span>
+                                    <span class="fw-bold text-primary">98%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="98"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">Voltage Withstand Testing</span>
+                                    <span class="fw-bold text-primary">96%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="96"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">Insulation Resistance Testing</span>
+                                    <span class="fw-bold text-primary">97%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="97"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="bs-card p-4 shadow floating-card">
+                            <h4 class="h3 mb-4 d-flex align-items-center">
+                                <i class="fas fa-chart-bar text-primary me-3"></i>
+                                Quality Management
+                            </h4>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">BIS Documentation & Compliance</span>
+                                    <span class="fw-bold text-primary">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">Root Cause Analysis</span>
+                                    <span class="fw-bold text-primary">94%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="94"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span class="fw-medium">Process Optimization</span>
+                                    <span class="fw-bold text-primary">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-4 fw-bold text-dark mb-3">Professional Experience</h2>
+                <p class="fs-5 text-muted">
+                    A proven track record of excellence across India's leading cable manufacturing organizations
+                </p>
+            </div>
+            
+            <div class="timeline">
+                <!-- Current Position -->
+                <div class="timeline-item">
+                    <div class="bs-card p-4 p-md-5 shadow floating-card">
+                        <span class="premium-badge">Current Position</span>
+                        <div class="d-md-flex justify-content-between align-items-start mb-4">
+                            <div class="mb-3 mb-md-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-briefcase text-primary me-3"></i>
+                                    <h3 class="h2 mb-0">Senior Engineer (Quality & Production)</h3>
+                                </div>
+                                <p class="h4 text-primary mb-2">Hyphen Cables Pvt. Ltd., Delhi</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-light text-dark">June 2019 – Present</span>
+                                    <span class="badge bg-primary">5+ Years</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center">
+                                <i class="fas fa-bullseye text-primary me-2"></i>
+                                Key Responsibilities
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Heading Quality & Production Departments ensuring compliance with BIS and ISO 9001 standards.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Implemented automated cable testing and data recording systems improving accuracy by 30%.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Reduced product rejections by 40% through robust root cause analysis and corrective measures.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Supervises 25+ QA/QC and production staff maintaining strict process discipline and safety compliance.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Managing complete BIS documentation, inspection schedules, and surveillance audits.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Strategic production planning to achieve monthly targets of 500+ MT cable production.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-success bg-opacity-10 rounded p-4 mt-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center text-success">
+                                <i class="fas fa-trophy me-2"></i>
+                                Key Achievements
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Successfully cleared 50+ BIS surveillance audits with zero non-conformities</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Reduced production defects by 40% through process optimization</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Implemented automated testing systems improving efficiency by 30%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Second Position -->
+                <div class="timeline-item">
+                    <div class="bs-card p-4 p-md-5 shadow floating-card">
+                        <span class="premium-badge">Previous Experience</span>
+                        <div class="d-md-flex justify-content-between align-items-start mb-4">
+                            <div class="mb-3 mb-md-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-flask text-primary me-3"></i>
+                                    <h3 class="h2 mb-0">Lab Incharge</h3>
+                                </div>
+                                <p class="h4 text-primary mb-2">Abhinav Overseas (Marino Cable Ind. Pvt. Ltd.), New Delhi</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-light text-dark">2016 – 2019</span>
+                                    <span class="badge bg-primary">3 Years</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center">
+                                <i class="fas fa-bullseye text-primary me-2"></i>
+                                Key Responsibilities
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Developed and standardized laboratory testing procedures as per IS and IEC standards.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Oversaw testing for conductor resistance, insulation integrity, and voltage endurance.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Led lab calibration and preventive maintenance ensuring zero downtime in quality tests.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Conducted detailed raw material analysis ensuring compliance with specifications.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Implemented advanced fault detection systems using partial discharge testing.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-success bg-opacity-10 rounded p-4 mt-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center text-success">
+                                <i class="fas fa-trophy me-2"></i>
+                                Key Achievements
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Established new testing procedures reducing analysis time by 25%</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Achieved 100% accuracy in quality predictions through improved testing</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Third Position -->
+                <div class="timeline-item">
+                    <div class="bs-card p-4 p-md-5 shadow floating-card">
+                        <span class="premium-badge">Previous Experience</span>
+                        <div class="d-md-flex justify-content-between align-items-start mb-4">
+                            <div class="mb-3 mb-md-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-flask text-primary me-3"></i>
+                                    <h3 class="h2 mb-0">Lab Incharge</h3>
+                                </div>
+                                <p class="h4 text-primary mb-2">Indian Cable Industries, Greater Noida</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-light text-dark">2011 – 2016</span>
+                                    <span class="badge bg-primary">5 Years</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center">
+                                <i class="fas fa-bullseye text-primary me-2"></i>
+                                Key Responsibilities
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Managed end-to-end cable testing operations under BIS guidelines ensuring product approval without deviation.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Supervised 15 technicians and conducted regular skill enhancement workshops.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Maintained flawless BIS compliance for five consecutive years.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Performed regular testing as per IS 694, IS 368, and related standards.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Implemented preventive maintenance schedules for testing equipment.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-success bg-opacity-10 rounded p-4 mt-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center text-success">
+                                <i class="fas fa-trophy me-2"></i>
+                                Key Achievements
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Maintained 100% BIS compliance record for 5 consecutive years</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Reduced testing turnaround time by 35%</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fourth Position -->
+                <div class="timeline-item">
+                    <div class="bs-card p-4 p-md-5 shadow floating-card">
+                        <span class="premium-badge">Previous Experience</span>
+                        <div class="d-md-flex justify-content-between align-items-start mb-4">
+                            <div class="mb-3 mb-md-0">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="fas fa-user-shield text-primary me-3"></i>
+                                    <h3 class="h2 mb-0">QC Supervisor</h3>
+                                </div>
+                                <p class="h4 text-primary mb-2">Dynamic Cables Pvt. Ltd., Jaipur</p>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-light text-dark">2009 – 2011</span>
+                                    <span class="badge bg-primary">2 Years</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center">
+                                <i class="fas fa-bullseye text-primary me-2"></i>
+                                Key Responsibilities
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Conducted in-line quality checks at various manufacturing stages such as annealing, insulation, and sheathing.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Ensured first-pass approval rate up to 95% by implementing real-time inspection checkpoints.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Performed final inspection and testing before dispatch ensuring all parameters meet customer requirements.</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-check text-success me-3 mt-1"></i>
+                                    <span>Maintained quality records, inspection reports, and coordinated with production for corrective actions.</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-success bg-opacity-10 rounded p-4 mt-4">
+                            <h4 class="h4 mb-3 d-flex align-items-center text-success">
+                                <i class="fas fa-trophy me-2"></i>
+                                Key Achievements
+                            </h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Improved first-time quality approval rate to 95%</span>
+                                </li>
+                                <li class="mb-2 d-flex">
+                                    <i class="fas fa-star text-warning me-3 mt-1"></i>
+                                    <span>Reduced customer complaints by 50% through rigorous inspection</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standards Section -->
+    <section id="standards" class="py-5 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-3 fw-bold mb-4" style="color: black;">Expertise in BIS Standards</h2>
+                <p class="fs-5 text-blue-200">
+                    Deep knowledge and hands-on experience with international quality standards and BIS specifications
+                </p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-book text-blue-400 text-xl me-3"></i>
+                            <h3 class="h4 mb-0" style="color: blue;">IS 694:2010</h3>
+                        </div>
+                        <p class="text-blue-300 fw-semibold mb-3">PVC Insulated Cable Quality & Routine Tests</p>
+                        <p class="text-gray-300 small">Expert in testing and compliance for PVC insulated cables up to 1100V with comprehensive understanding of all amendments and technical requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-book text-blue-400 text-xl me-3"></i>
+                            <h3 class="h4 mb-0" style="color: blue;">IS 14255:1995</h3>
+                        </div>
+                        <p class="text-blue-300 fw-semibold mb-3">XLPE Insulated Cable Specifications</p>
+                        <p class="text-gray-300 small">Specialized in cross-linked polyethylene insulated cables specifications including thermal aging tests and partial discharge requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-book text-blue-400 text-xl me-3"></i>
+                            <h3 class="h4 mb-0" style="color: blue;">IS 1554 (Part 1):1988</h3>
+                        </div>
+                        <p class="text-blue-300 fw-semibold mb-3">Voltage Endurance & Acceptance Criteria</p>
+                        <p class="text-gray-300 small">Proficient in specifications for high voltage cables and accessories including impulse voltage tests and routine electrical tests.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-book text-blue-400 text-xl me-3"></i>
+                            <h3 class="h4 mb-0" style="color: blue;">IS 7098 (Part 1):1988</h3>
+                        </div>
+                        <p class="text-blue-300 fw-semibold mb-3">High Voltage XLPE Cable Testing</p>
+                        <p class="text-gray-300 small">Comprehensive knowledge of flexible cables for industrial applications including rubber insulation tests and mechanical flexibility requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-book text-blue-400 text-xl me-3"></i>
+                            <h3 class="h4 mb-0" style="color: blue;">IS 368 (Part 2)</h3>
+                        </div>
+                        <p class="text-blue-300 fw-semibold mb-3">Insulating Material Quality Control</p>
+                        <p class="text-gray-300 small">Expert in conductor materials and manufacturing standards including resistivity tests and dimensional requirements for different conductor classes.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-book text-blue-400 text-xl me-3"></i>
+                            <h3 class="h4 mb-0" style="color: blue;">ISO 9001</h3>
+                        </div>
+                        <p class="text-blue-300 fw-semibold mb-3">Certified Quality Management Systems</p>
+                        <p class="text-gray-300 small">Certified in implementing and maintaining quality management systems with focus on continuous improvement and customer satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-blue-900 to-slate-800 rounded-3 p-5 shadow-2xl floating-card">
+                <h3 class="h1 text-center mb-5">Professional Certifications</h3>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center bg-slate-800/50 rounded p-3 hover:bg-slate-700/50 transition">
+                            <i class="fas fa-award text-warning me-3"></i>
+                            <span>BIS License Holder (Multiple Categories)</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center bg-slate-800/50 rounded p-3 hover:bg-slate-700/50 transition">
+                            <i class="fas fa-award text-warning me-3"></i>
+                            <span>ISO 9001 Quality Management System</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center bg-slate-800/50 rounded p-3 hover:bg-slate-700/50 transition">
+                            <i class="fas fa-award text-warning me-3"></i>
+                            <span>Industrial Safety & Compliance</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center bg-slate-800/50 rounded p-3 hover:bg-slate-700/50 transition">
+                            <i class="fas fa-award text-warning me-3"></i>
+                            <span>Advanced Cable Testing Methodologies</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center bg-slate-800/50 rounded p-3 hover:bg-slate-700/50 transition">
+                            <i class="fas fa-award text-warning me-3"></i>
+                            <span>Six Sigma Principles</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center bg-slate-800/50 rounded p-3 hover:bg-slate-700/50 transition">
+                            <i class="fas fa-award text-warning me-3"></i>
+                            <span>Production Planning & Control</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="section-title text-center display-4 fw-bold text-dark mb-5">Educational Background</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-white rounded-3 p-5 shadow floating-card border-top border-4 border-primary">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-graduation-cap text-primary text-4xl"></i>
+                        </div>
+                        <h3 class="h2 text-center mb-3">Diploma in Electronics Engineering</h3>
+                        <p class="h5 text-center text-gray-700 mb-2">Govt. Polytechnic College, Alwar (Raj.)</p>
+                        <div class="d-flex justify-content-center align-items-center mb-4">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            <p class="h4 text-primary fw-bold mb-0">62.07%</p>
+                        </div>
+                        <p class="text-center text-gray-600">Comprehensive education in electronics principles, circuit design, and industrial applications</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-white rounded-3 p-5 shadow floating-card border-top border-4 border-success">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-certificate text-success text-4xl"></i>
+                        </div>
+                        <h3 class="h2 text-center mb-3">Industrial Training</h3>
+                        <p class="h5 text-center text-gray-700 mb-2">PLCC Alwar, 220KV GSS, Alwar (Raj.)</p>
+                        <div class="d-flex justify-content-center align-items-center mb-4">
+                            <i class="fas fa-clock text-success me-2"></i>
+                            <p class="h4 text-success fw-bold mb-0">24 Days Intensive Training</p>
+                        </div>
+                        <p class="text-center text-gray-600">Specialized training on Power Line Carrier Communication systems and high voltage grid operations</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Education -->
+            <div class="row mt-4 g-4">
+                <div class="col-md-6">
+                    <div class="bg-white rounded-3 p-4 shadow floating-card border-start border-4 border-primary">
+                        <h4 class="h3 mb-2">Senior Secondary Education</h4>
+                        <p class="text-gray-700">Board of Secondary Education, Ajmer (Raj.)</p>
+                        <p class="h5 text-primary fw-semibold mt-2">56.15%</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bg-white rounded-3 p-4 shadow floating-card border-start border-4 border-primary">
+                        <h4 class="h3 mb-2">Secondary Education</h4>
+                        <p class="text-gray-700">Board of Secondary Education, Ajmer (Raj.)</p>
+                        <p class="h5 text-primary fw-semibold mt-2">71.17%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-5 bg-gradient-to-b from-slate-50 to-white">
+        <div class="container">
+            <h2 class="section-title text-center display-4 fw-bold text-dark mb-5">Notable Achievements</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3 p-5 text-white floating-card text-center">
+                        <div class="display-4 fw-bold text-warning mb-3">50+</div>
+                        <h3 class="h3 mb-3">BIS Surveillance Audits</h3>
+                        <p class="text-blue-200">Successfully cleared 50+ BIS surveillance audits with zero non-conformities across multiple manufacturing facilities.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3 p-5 text-white floating-card text-center">
+                        <div class="display-4 fw-bold text-warning mb-3">40%</div>
+                        <h3 class="h3 mb-3">Defect Reduction</h3>
+                        <p class="text-blue-200">Reduced production defects by 40% through systematic process optimization and root cause analysis implementation.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3 p-5 text-white floating-card text-center">
+                        <div class="display-4 fw-bold text-warning mb-3">30%</div>
+                        <h3 class="h3 mb-3">Efficiency Improvement</h3>
+                        <p class="text-blue-200">Implemented automated data logging system for cable testing efficiency improvement by 30%.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3 p-5 text-white floating-card text-center">
+                        <div class="display-4 fw-bold text-warning mb-3">25%</div>
+                        <h3 class="h3 mb-3">Team Productivity</h3>
+                        <p class="text-blue-200">Enhanced team productivity by 25% through targeted training programs and performance management systems.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3 p-5 text-white floating-card text-center">
+                        <div class="display-4 fw-bold text-warning mb-3">100%</div>
+                        <h3 class="h3 mb-3">BIS Compliance</h3>
+                        <p class="text-blue-200">Maintained 100% BIS compliance record for 5 consecutive years at Indian Cable Industries with zero product recalls.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-3 p-5 text-white floating-card text-center">
+                        <div class="display-4 fw-bold text-warning mb-3">95%</div>
+                        <h3 class="h3 mb-3">First-Pass Approval</h3>
+                        <p class="text-blue-200">Achieved first-pass approval rate of 95% by implementing real-time inspection checkpoints and quality controls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section gradient-bg text-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold mb-3">Get In Touch</h2>
+                <p class="fs-5 text-blue-200">Ready to discuss how I can contribute to your organization's quality excellence</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-10">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="contact-card bg-slate-800 rounded-3 p-4 text-center h-100">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                    <i class="fas fa-phone fa-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-3">Phone</h3>
+                                <a href="tel:+918742988977" class="fs-5 text-blue-300 text-decoration-none d-block">
+                                    +91 87429 88977
+                                </a>
+                                <p class="text-light mt-2 small">Available during business hours</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-card bg-slate-800 rounded-3 p-4 text-center h-100">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                    <i class="fas fa-envelope fa-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-3">Email</h3>
+                                <a href="mailto:manveerraj@gmail.com" class="fs-6 text-blue-300 text-decoration-none break-all d-block">
+                                    manveerraj@gmail.com
+                                </a>
+                                <p class="text-light mt-2 small">Response within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-card bg-slate-800 rounded-3 p-4 text-center h-100">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                                    <i class="fas fa-map-marker-alt fa-lg text-white"></i>
+                                </div>
+                                <h3 class="h4 mb-3">Location</h3>
+                                <p class="text-light small">
+                                    Ganga Vihar Colony, Behind Rawat Palace, Somnath Nagar, Dausa (Raj.) – 303303
+                                </p>
+                                <p class="text-light mt-2 small">Available for opportunities across India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Availability -->
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-8">
+                    <div class="bg-slate-800 rounded-3 p-4 p-md-5">
+                        <h3 class="h2 text-center mb-4 text-warning">Professional Availability</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <h4 class="h4 mb-3 text-blue-300">Available For</h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-check text-success me-3"></i>
+                                        <span>Senior Quality Engineering Roles</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-check text-success me-3"></i>
+                                        <span>BIS Compliance Consulting</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-check text-success me-3"></i>
+                                        <span>Quality Management System Implementation</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-check text-success me-3"></i>
+                                        <span>Production Process Optimization</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="h4 mb-3 text-blue-300">Response Time</h4>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-clock text-primary me-3"></i>
+                                        <span>Email: Within 24 hours</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-clock text-primary me-3"></i>
+                                        <span>Phone: Immediate during business hours</span>
+                                    </li>
+                                    <li class="mb-2 d-flex align-items-center">
+                                        <i class="fas fa-calendar text-primary me-3"></i>
+                                        <span>Meeting: Within 48 hours</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="mailto:manveerraj@gmail.com" class="btn btn-warning px-4 py-2 fs-5 rounded-pill">
+                                <i class="fas fa-envelope me-2"></i>Email Me Directly
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h3 class="h4 mb-2">Manveer Singh</h3>
+                    <p class="mb-0 small">Senior Quality Engineer specializing in cable manufacturing with 15+ years of excellence</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#contact" class="btn btn-outline-light btn-sm">
+                        <i class="fas fa-download me-1"></i>Download Resume
+                    </a>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-3 pt-3 text-center">
+                <p class="mb-1 small">© 2025 Manveer Singh. All rights reserved.</p>
+                <p class="text-muted small">Designed for Excellence in Quality Engineering | Design & Developed by Ajay Yadav</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // Initialize when document is ready
+        $(document).ready(function() {
+            // Initialize Particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#3b82f6" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#3b82f6",
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "repulse" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            });
+            
+            // GSAP Animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate elements on scroll
+            gsap.utils.toArray('.fade-in-up').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+            
+            // Animate skill bars
+            gsap.utils.toArray('.skill-progress').forEach(bar => {
+                ScrollTrigger.create({
+                    trigger: bar,
+                    start: "top 80%",
+                    onEnter: () => {
+                        const width = bar.getAttribute('data-width');
+                        gsap.to(bar, {
+                            width: `${width}%`,
+                            duration: 1.5,
+                            ease: "power2.out"
+                        });
+                    }
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const target = $(this.getAttribute('href'));
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1000);
+                }
+            });
+            
+            // Navbar background on scroll
+            $(window).on('scroll', function() {
+                if ($(window).scrollTop() > 50) {
+                    $('.navbar').css('background-color', 'rgba(15, 23, 42, 0.95)');
+                } else {
+                    $('.navbar').css('background-color', 'rgba(15, 23, 42, 0.95)');
+                }
+            });
+            
+            // Active nav link highlighting
+            const sections = $('section');
+            const navLinks = $('.navbar-nav .nav-link');
+            
+            $(window).on('scroll', function() {
+                let current = '';
+                const scrollPos = $(window).scrollTop() + 100;
+                
+                sections.each(function() {
+                    const sectionTop = $(this).offset().top;
+                    const sectionHeight = $(this).outerHeight();
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        current = $(this).attr('id');
+                    }
+                });
+                
+                navLinks.removeClass('active');
+                $(`.navbar-nav .nav-link[href="#${current}"]`).addClass('active');
+            });
+            
+            // Loading animation completion
+            setTimeout(() => {
+                $('.loading-bar').fadeOut();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
