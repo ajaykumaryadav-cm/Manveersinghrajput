@@ -1346,9 +1346,9 @@
                 $(`.navbar-nav .nav-link[href="#${current}"]`).addClass('active');
             });
             
-            // Loading animation completion
+            // Loading animation completion - Modified to not fade out
             setTimeout(() => {
-                $('.loading-bar').fadeOut();
+                // Loading bar remains visible - fadeOut removed
             }, 2000);
         });
     </script>
