@@ -82,16 +82,6 @@
             box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.02);
         }
         
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -245,6 +235,40 @@
             display: inline-block;
             margin-bottom: 10px;
         }
+        
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #f59e0b;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .gallery-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -267,12 +291,13 @@
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#expertise">Expertise</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#standards">Standards</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
-                <a href="#contact" class="btn bs-btn-primary text-white ms-3">
+                <a href="#contact" class="btn bs-btn-primary text-white ms-3" id="resume-download">
                     <i class="fas fa-download me-2"></i>Resume
                 </a>
             </div>
@@ -288,20 +313,19 @@
         <div class="container position-relative z-10 text-center text-white">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="mb-5 floating">
-                        <div class="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full mx-auto border-4 border-yellow-500 shadow-2xl bg-gradient-to-br from-blue-900 to-slate-800 flex items-center justify-center">
-                            <i class="fas fa-user-tie text-5xl md:text-6xl text-white"></i>
-                        </div>
+                    <div class="mb-5">
+                        <!-- Profile Photo -->
+                        <img src="https://via.placeholder.com/200" alt="Manveer Singh" class="profile-photo">
                     </div>
-                    <h1 class="display-3 fw-bold mb-4 fade-in-up">Manveer Singh</h1>
-                    <p class="fs-2 text-blue-300 mb-3 fade-in-up">Senior Quality Engineer</p>
-                    <p class="fs-4 text-yellow-400 mb-4 fade-in-up">Cable Manufacturing Expert | BIS Compliance Specialist</p>
-                    <p class="fs-5 text-gray-300 mb-5 px-4 fade-in-up">"Ensuring Quality, Reliability, and Perfection in Every Cable We Deliver."</p>
-                    <div class="d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center fade-in-up">
+                    <h1 class="display-3 fw-bold mb-4">Manveer Singh</h1>
+                    <p class="fs-2 text-blue-300 mb-3">Senior Quality Engineer</p>
+                    <p class="fs-4 text-yellow-400 mb-4">Cable Manufacturing Expert | BIS Compliance Specialist</p>
+                    <p class="fs-5 text-gray-300 mb-5 px-4">"Ensuring Quality, Reliability, and Perfection in Every Cable We Deliver."</p>
+                    <div class="d-flex flex-column flex-sm-row gap-4 justify-content-center align-items-center">
                         <a href="#contact" class="btn bs-btn-primary text-white px-5 py-3 fs-5 rounded-pill">
                             <i class="fas fa-paper-plane me-2"></i>Get In Touch
                         </a>
-                        <a href="#contact" class="btn btn-light text-dark px-5 py-3 fs-5 rounded-pill">
+                        <a href="#contact" class="btn btn-light text-dark px-5 py-3 fs-5 rounded-pill" id="resume-download-hero">
                             <i class="fas fa-download me-2"></i>Download Resume
                         </a>
                     </div>
@@ -312,7 +336,7 @@
         <!-- Scroll Indicator -->
         <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
             <a href="#about" class="text-white fs-1">
-                <i class="fas fa-chevron-down animate-bounce"></i>
+                <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </section>
@@ -861,11 +885,65 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title display-4 fw-bold text-dark mb-3">Quality Control & Laboratory Facilities</h2>
+                <p class="fs-5 text-muted">
+                    State-of-the-art testing facilities and manufacturing processes ensuring highest quality standards
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="gallery-card">
+                        <img src="https://via.placeholder.com/600x400" alt="Cable Testing Laboratory" class="gallery-img">
+                        <div class="p-4">
+                            <h3 class="h4 mb-2">Advanced Cable Testing Laboratory</h3>
+                            <p class="text-muted">Our state-of-the-art testing facility equipped with precision instruments for comprehensive cable quality assessment including conductor resistance, insulation integrity, and voltage withstand testing.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="gallery-card">
+                        <img src="https://via.placeholder.com/600x400" alt="BIS Compliance Documentation" class="gallery-img">
+                        <div class="p-4">
+                            <h3 class="h4 mb-2">BIS Compliance Documentation Center</h3>
+                            <p class="text-muted">Meticulously maintained documentation center housing all BIS compliance records, test reports, and quality certificates ensuring 100% audit readiness at all times.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="gallery-card">
+                        <img src="https://via.placeholder.com/600x400" alt="Manufacturing Process" class="gallery-img">
+                        <div class="p-4">
+                            <h3 class="h4 mb-2">Precision Manufacturing Process</h3>
+                            <p class="text-muted">Advanced manufacturing floor with automated processes for cable extrusion, stranding, and sheathing operations ensuring dimensional accuracy and material consistency.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="gallery-card">
+                        <img src="https://via.placeholder.com/600x400" alt="Quality Inspection" class="gallery-img">
+                        <div class="p-4">
+                            <h3 class="h4 mb-2">Quality Inspection & Verification</h3>
+                            <p class="text-muted">Rigorous quality inspection at every manufacturing stage with specialized equipment for dimensional checks, visual inspection, and material verification.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Standards Section -->
     <section id="standards" class="py-5 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="display-3 fw-bold mb-4" style="color: black;">Expertise in BIS Standards</h2>
+                <h2 class="display-3 fw-bold mb-4" style="color: #f59e0b;">Expertise in BIS Standards</h2>
                 <p class="fs-5 text-blue-200">
                     Deep knowledge and hands-on experience with international quality standards and BIS specifications
                 </p>
@@ -876,7 +954,7 @@
                     <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-book text-blue-400 text-xl me-3"></i>
-                            <h3 class="h4 mb-0" style="color: blue;">IS 694:2010</h3>
+                            <h3 class="h4 mb-0">IS 694:2010</h3>
                         </div>
                         <p class="text-blue-300 fw-semibold mb-3">PVC Insulated Cable Quality & Routine Tests</p>
                         <p class="text-gray-300 small">Expert in testing and compliance for PVC insulated cables up to 1100V with comprehensive understanding of all amendments and technical requirements.</p>
@@ -887,7 +965,7 @@
                     <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-book text-blue-400 text-xl me-3"></i>
-                            <h3 class="h4 mb-0" style="color: blue;">IS 14255:1995</h3>
+                            <h3 class="h4 mb-0">IS 14255:1995</h3>
                         </div>
                         <p class="text-blue-300 fw-semibold mb-3">XLPE Insulated Cable Specifications</p>
                         <p class="text-gray-300 small">Specialized in cross-linked polyethylene insulated cables specifications including thermal aging tests and partial discharge requirements.</p>
@@ -898,7 +976,7 @@
                     <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-book text-blue-400 text-xl me-3"></i>
-                            <h3 class="h4 mb-0" style="color: blue;">IS 1554 (Part 1):1988</h3>
+                            <h3 class="h4 mb-0">IS 1554 (Part 1):1988</h3>
                         </div>
                         <p class="text-blue-300 fw-semibold mb-3">Voltage Endurance & Acceptance Criteria</p>
                         <p class="text-gray-300 small">Proficient in specifications for high voltage cables and accessories including impulse voltage tests and routine electrical tests.</p>
@@ -909,7 +987,7 @@
                     <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-book text-blue-400 text-xl me-3"></i>
-                            <h3 class="h4 mb-0" style="color: blue;">IS 7098 (Part 1):1988</h3>
+                            <h3 class="h4 mb-0">IS 7098 (Part 1):1988</h3>
                         </div>
                         <p class="text-blue-300 fw-semibold mb-3">High Voltage XLPE Cable Testing</p>
                         <p class="text-gray-300 small">Comprehensive knowledge of flexible cables for industrial applications including rubber insulation tests and mechanical flexibility requirements.</p>
@@ -920,7 +998,7 @@
                     <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-book text-blue-400 text-xl me-3"></i>
-                            <h3 class="h4 mb-0" style="color: blue;">IS 368 (Part 2)</h3>
+                            <h3 class="h4 mb-0">IS 368 (Part 2)</h3>
                         </div>
                         <p class="text-blue-300 fw-semibold mb-3">Insulating Material Quality Control</p>
                         <p class="text-gray-300 small">Expert in conductor materials and manufacturing standards including resistivity tests and dimensional requirements for different conductor classes.</p>
@@ -931,7 +1009,7 @@
                     <div class="bg-slate-800 rounded-xl p-4 hover:bg-slate-700 transition shadow-lg border border-slate-700 floating-card h-100">
                         <div class="d-flex align-items-center mb-3">
                             <i class="fas fa-book text-blue-400 text-xl me-3"></i>
-                            <h3 class="h4 mb-0" style="color: blue;">ISO 9001</h3>
+                            <h3 class="h4 mb-0">ISO 9001</h3>
                         </div>
                         <p class="text-blue-300 fw-semibold mb-3">Certified Quality Management Systems</p>
                         <p class="text-gray-300 small">Certified in implementing and maintaining quality management systems with focus on continuous improvement and customer satisfaction.</p>
@@ -1212,7 +1290,7 @@
                     <p class="mb-0 small">Senior Quality Engineer specializing in cable manufacturing with 15+ years of excellence</p>
                 </div>
                 <div class="col-md-6 text-md-end">
-                    <a href="#contact" class="btn btn-outline-light btn-sm">
+                    <a href="#contact" class="btn btn-outline-light btn-sm" id="resume-download-footer">
                         <i class="fas fa-download me-1"></i>Download Resume
                     </a>
                 </div>
@@ -1273,7 +1351,7 @@
             // GSAP Animations
             gsap.registerPlugin(ScrollTrigger);
             
-            // Animate elements on scroll
+            // Animate elements on scroll (except hero section)
             gsap.utils.toArray('.fade-in-up').forEach(element => {
                 gsap.from(element, {
                     scrollTrigger: {
@@ -1346,7 +1424,13 @@
                 $(`.navbar-nav .nav-link[href="#${current}"]`).addClass('active');
             });
             
-            // Loading animation completion - Modified to not fade out
+            // Resume download placeholder
+            $('#resume-download, #resume-download-hero, #resume-download-footer').on('click', function(e) {
+                e.preventDefault();
+                alert('Resume download link will be added soon. Please contact Manveer directly for his resume.');
+            });
+            
+            // Loading animation completion
             setTimeout(() => {
                 // Loading bar remains visible - fadeOut removed
             }, 2000);
