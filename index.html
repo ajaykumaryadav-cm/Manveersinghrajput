@@ -987,7 +987,7 @@
     </div>
   </section>
 
-  <!-- ======================= CONTACT SECTION ======================= -->
+  <!-- ======================= CONTACT SECTION WITH WHATSAPP FORM ======================= -->
   <section id="contact" class="py-20 gradient-bg text-white">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get In Touch</h2>
@@ -1013,6 +1013,10 @@
               <i class="fas fa-phone text-accent mr-3 text-xl"></i>
               +91 87429 88977
             </p>
+            <p class="flex items-center">
+              <i class="fab fa-whatsapp text-accent mr-3 text-xl"></i>
+              +91 87429 88977 (WhatsApp)
+            </p>
           </div>
 
           <div class="flex gap-4 pt-4">
@@ -1031,25 +1035,47 @@
           </div>
         </div>
         
-        <!-- Right: Contact Form -->
-        <form id="contact-form" class="bg-white text-slate-800 shadow-lg rounded-2xl p-8 space-y-6">
+        <!-- Right: WhatsApp Contact Form -->
+        <form id="whatsapp-form" class="bg-white text-slate-800 shadow-lg rounded-2xl p-8 space-y-6">
           <div>
-            <label for="name" class="block text-sm font-semibold text-dark mb-2">Full Name</label>
-            <input type="text" id="name" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required>
+            <label for="name" class="block text-sm font-semibold text-dark mb-2">Full Name *</label>
+            <input type="text" id="name" name="name" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required>
           </div>
           
           <div>
-            <label for="email" class="block text-sm font-semibold text-dark mb-2">Email Address</label>
-            <input type="email" id="email" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required>
+            <label for="email" class="block text-sm font-semibold text-dark mb-2">Email Address *</label>
+            <input type="email" id="email" name="email" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required>
           </div>
           
           <div>
-            <label for="message" class="block text-sm font-semibold text-dark mb-2">Message</label>
-            <textarea id="message" rows="5" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required></textarea>
+            <label for="phone" class="block text-sm font-semibold text-dark mb-2">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required>
           </div>
           
-          <button type="submit" class="bg-primary text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-800 transition w-full">
-            <i class="fas fa-paper-plane mr-2"></i> Send Message
+          <div>
+            <label for="company" class="block text-sm font-semibold text-dark mb-2">Company/Organization</label>
+            <input type="text" id="company" name="company" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none">
+          </div>
+          
+          <div>
+            <label for="service" class="block text-sm font-semibold text-dark mb-2">Service Required</label>
+            <select id="service" name="service" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none">
+              <option value="">Select a service</option>
+              <option value="BIS Certification">BIS Certification</option>
+              <option value="Quality Testing">Quality Testing</option>
+              <option value="Process Improvement">Process Improvement</option>
+              <option value="Consultation">Consultation</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-sm font-semibold text-dark mb-2">Message *</label>
+            <textarea id="message" name="message" rows="4" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-primary outline-none" required></textarea>
+          </div>
+          
+          <button type="submit" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-700 transition w-full flex items-center justify-center">
+            <i class="fab fa-whatsapp mr-2 text-xl"></i> Send via WhatsApp
           </button>
           
           <p id="form-status" class="text-sm text-center pt-2 text-slate-500"></p>
@@ -1160,26 +1186,58 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Contact form submission
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    form.addEventListener('submit', e => {
+    // WhatsApp Form Submission
+    const whatsappForm = document.getElementById('whatsapp-form');
+    const formStatus = document.getElementById('form-status');
+    
+    whatsappForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-
-      if (!name || !email || !message) {
-        status.textContent = "⚠️ Please fill out all fields.";
-        status.classList.add('text-red-500');
+      
+      // Get form values
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value.trim();
+      
+      // Validation
+      if (!name || !email || !phone || !message) {
+        formStatus.textContent = "⚠️ Please fill all required fields.";
+        formStatus.className = "text-sm text-center pt-2 text-red-500";
         return;
       }
-
-      // Mock submit success
-      status.textContent = "✅ Message sent successfully!";
-      status.classList.remove('text-red-500');
-      status.classList.add('text-green-600');
-      form.reset();
+      
+      // Create WhatsApp message
+      const whatsappMessage = 
+        `*New Contact Form Submission*%0A%0A` +
+        `*Name:* ${name}%0A` +
+        `*Email:* ${email}%0A` +
+        `*Phone:* ${phone}%0A` +
+        `*Company:* ${company || 'Not provided'}%0A` +
+        `*Service Required:* ${service || 'Not specified'}%0A` +
+        `*Message:* ${message}%0A%0A` +
+        `_Sent from Manveer Singh Portfolio Website_`;
+      
+      // Manveer's WhatsApp number
+      const whatsappNumber = "918742988977"; // Country code without +
+      
+      // Create WhatsApp URL
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+      
+      // Open WhatsApp in new tab
+      window.open(whatsappURL, '_blank');
+      
+      // Show success message
+      formStatus.textContent = "✅ Opening WhatsApp... Please send the message.";
+      formStatus.className = "text-sm text-center pt-2 text-green-600";
+      
+      // Optional: Reset form after 3 seconds
+      setTimeout(() => {
+        whatsappForm.reset();
+        formStatus.textContent = "Form ready for new message";
+        formStatus.className = "text-sm text-center pt-2 text-slate-500";
+      }, 3000);
     });
 
     // Resume download placeholder
